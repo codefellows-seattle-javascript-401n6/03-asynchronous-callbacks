@@ -9,7 +9,8 @@
 * Submit on canvas a question and observation, how long you spent, and a link to your pull request
 
 ## Resources  
-  * [fs module docs](https://nodejs.org/api/fs.html)
+* [fs module docs](https://nodejs.org/api/fs.html)
+* [Top 100 Book Downloads Project Gutenberg](https://www.gutenberg.org/browse/scores/top)
 
 ## Configuration 
 Configure the root of your repository with the following files and directories.
@@ -52,6 +53,7 @@ and it's behavior (for both valid and invalid use). Feel free to write any
 additional information in your README.md.
 
 ## Stretch Goals
-Write the reader function recursivly so that it will be able to support 0 or more paths.
+Write the reader function recursivly so that it will be able to support any
+number of files, not just three.
 
 
