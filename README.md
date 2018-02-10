@@ -50,8 +50,3 @@ Every function description should include it's arity (expected number of
 parameters), the expected data for each parameter (data-type and limitations),
 and it's behavior (for both valid and invalid use). Feel free to write any
 additional information in your README.md.
-
-## Stretch Goals
-Write the reader function recursivly so that it will be able to support 0 or more paths.
-
-
