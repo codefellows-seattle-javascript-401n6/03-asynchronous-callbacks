@@ -1,7 +1,10 @@
 'use strict';
 
-
+// Readthreefiles(['../assets/file1.txt',
+// '../assets/file2.txt',
+// '../assets/file3.txt'],readCb);
 const fs = require('fs');
+const each = require('async-each');
 const inputFile = [
   '../assets/file1.txt',
   '../assets/file2.txt',
@@ -16,20 +19,16 @@ function readCb(err,results){
 
   let file = results.toString();
 
-  return file;
+  outputFile.push(file);
   console.log('file:',file);
 };
 
-// outputFile[0] = fs.readFile(inputFile, readCb);
-// outputFile[1] = fs.readFile(inputFile, readCb);
-// outputFile[2] = fs.readFile(inputFile, readCb);
+each(inputFile, fs.readFile, readCb);
 
-inputFile.forEach(function(){
-  let output = fs.readFile(inputFile, readCb);
-  console.log('output:', output);
-  outputFile.push(output);
-});
-
+console.log('output array', outputFile);
+// fs.readFile(inputFile[0], readCb);
+// fs.readFile(inputFile[1], readCb);
+// fs.readFile(inputFile[2], readCb);
 
 
 

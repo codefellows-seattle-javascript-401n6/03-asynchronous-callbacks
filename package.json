@@ -18,5 +18,8 @@
   "bugs": {
     "url": "https://github.com/splitpeasoup/03-asynchronous-callbacks/issues"
   },
-  "homepage": "https://github.com/splitpeasoup/03-asynchronous-callbacks#readme"
+  "homepage": "https://github.com/splitpeasoup/03-asynchronous-callbacks#readme",
+  "dependencies": {
+    "async-each": "^1.0.1"
+  }
 }
