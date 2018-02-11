@@ -11,14 +11,14 @@ function reader(text, cb) {
         fs.readFile(`../assets/${files[i]}`, (err, data) => {
             if (err) throw err;
             let str = data.toString();
-            console.log(str);
+            // console.log(str);
             list.push(str);
 
             if (list.length == text.length) {
                 cb(list)
-            };
+            }
         });
-    };
+    }
 
 }
 reader(files, (list) => {

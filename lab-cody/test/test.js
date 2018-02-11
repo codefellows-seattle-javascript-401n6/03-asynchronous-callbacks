@@ -2,21 +2,46 @@
 const reader = require('../lib/reader.js').reader;
 
 
-
-
-
-
-
-
-
-
-
-// example using done in "it" tests
-it('true should be true', (done) => {
-    setTimeount(() => {
-      expect(true).toBe(true)
-      done()
-      // done('any value`) // passing a value into done makes the test fail
-    }, 0)
-    // invoking done here will be a false positive
+describe('file reader function ', () => {
+    it('should give an error for an incorrect filepath',() => {
+      let str = 'faildamnit';
+      let result = reader(str);
+      let expected = undefined;
+      expect(result).toBe(expected);
+  
+    })
+  });
+  
+  describe('file reader function ', () => {
+    it('ensure the reader function correctly resolves mapped string data for an array of file paths',() => {
+      let str = 'short.text';
+      let result = reader(str);
+      let expected = 'short.text';
+      expect(result).toBe(expected);
+  
+  
+    })
+  });
+  
+  describe('file reader function', () => {
+    it('make sure the order of the results matches the order of the files as they were passed in',() => {
+        reader(files, (list) => {
+            console.log(list)
+        });
+    //   let str = 'world';
+    //   let result = greet(str);
+    //   let expected = 'hello ' + 'world';
+    //   expect(result).toBe(expected);
+    })
   })
+
+
+
+
+
+
+
+
+
+
+
