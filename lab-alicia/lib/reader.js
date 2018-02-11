@@ -36,8 +36,3 @@ function reader(paths, cb) {
 }
 
 reader(['../assets/book.txt', '../assets/script.txt', '../assets/list.txt']);
-
-// are all paths finished reading and make sure the results are in the right order 
-// once finished and no errors return all results to the cb.
-
-//how do i track when whole thing is done
