@@ -12,7 +12,5 @@ reader(paths, callback(error[, array]);
 
 ## Parameters
 
-paths
-  array of file paths as strings
-callback
-  Function to execute for array data
+- paths: array of file paths as strings
+- callback: Function to execute for array data
