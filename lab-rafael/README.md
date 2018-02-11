@@ -7,9 +7,7 @@ If valid paths are provided, the callback function is run;
 
 ## Syntax
 ```javascript
-reader(paths, callback(error[, array]) {
-    //your iterator
-}[, thisArg]);
+reader(paths, callback(error[, array]);
 ```
 
 ## Parameters
