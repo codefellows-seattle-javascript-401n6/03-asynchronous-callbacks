@@ -28,8 +28,8 @@ Reader.readCallBack = (err, results, index, sendFileCB) => {
     if (Reader.readCount === 3) {
       sendFileCB(false, Reader.newFileArray);
     }
+    Reader.readCount++;
   }
-  
 }
 
 Reader.readAll = (array, sendFileCB) => {
@@ -38,11 +38,6 @@ Reader.readAll = (array, sendFileCB) => {
   } else {
     for (let i = 0; i < array.length; i++) {
       let currentPath = array[i];
-      // console.log(currentPath, 'current path');
-      // if (currentPath === undefined) {
-      //   sendFileCB(404);
-      // }
-      Reader.readCount++;
       Reader.read(currentPath, Reader.readCallBack, i, sendFileCB);
     }
   }
