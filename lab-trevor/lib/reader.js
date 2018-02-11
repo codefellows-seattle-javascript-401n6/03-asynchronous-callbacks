@@ -7,13 +7,16 @@ function reader(paths, cb) {
     let newArr = [];
 
     for(let i = 0; i < paths.length; i++){
-        fs.readFile(paths[i], (err, data) => { 
+        fs.readFile(paths[i], (err, data) => {
             cb1(err, data, i)
         })
     }
 
     let cb1 = function (err, data, i) {
+        
+
         if (err) {
+            console.log("ERR", err)
             cb(err)
             return;
         };
@@ -22,7 +25,9 @@ function reader(paths, cb) {
         newArr[i] = str;
         isFinished++
         
+        
         if(isFinished === paths.length){
+            
             cb(null, newArr)
         }
     }
