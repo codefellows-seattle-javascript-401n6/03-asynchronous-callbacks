@@ -1,0 +1,19 @@
+{
+  "name": "03-asynchronous-callbacks",
+  "version": "1.0.0",
+  "description": "lab 03",
+  "main": "index.js",
+  "scripts": {
+    "test": "jest"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/bjbuchholz/03-asynchronous-callbacks.git"
+  },
+  "author": "Brandon Buchholz",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/bjbuchholz/03-asynchronous-callbacks/issues"
+  },
+  "homepage": "https://github.com/bjbuchholz/03-asynchronous-callbacks#readme"
+}
