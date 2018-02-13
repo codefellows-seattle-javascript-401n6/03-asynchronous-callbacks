@@ -1,5 +1,7 @@
 'use strict';
 
+jest.setTimeout(10000);
+
 const Reader = require('../lib/reader.js');
 
 describe('Test with for an empty array', () => {
@@ -35,31 +37,9 @@ describe('Test with for null instead of an array', () => {
   })
 });
 
-describe('Test with a correct array', () => {
-  let expected = [
-    'Title: Pride and Prejudice',
-    'hello',
-    'Title: The Peace Negotiations',
-  ];
-  it('this right order: pride and prejudice, hellow world, peace negotiations', (resolve, reject) => {
-    let filePathArray = [
-      `./assets/pride-prejudice.txt`,
-      `./assets/hello.txt`,
-      `./assets/peace-negotiations.txt`
-    ];
-    Reader.readAll(filePathArray, (err, results) => {
-      console.log(results);
-      expect(results[0].includes(expected[0])).toEqual(true);
-      expect(results[1].includes(expected[1])).toEqual(true);
-      expect(results[2].includes(expected[2])).toEqual(true);
-      resolve();
-    });
-  })
-});
-
 describe('Test with an array that has an invalid path', () => {
   let expected = undefined;
-  it('this right order: pride and prejudice, hellow world, peace negotiations', (resolve, reject) => {
+  it('this right order: pride and prejudice, hello world, peace negotiations', (resolve, reject) => {
     let filePathArray = [
       `./assets/pride-prejudice.txt`,
       `./assets/hello2.txt`,
@@ -67,6 +47,27 @@ describe('Test with an array that has an invalid path', () => {
     ];
     Reader.readAll(filePathArray, (err, results) => {
       expect(results).toEqual(expected);
+      resolve();
+    });
+  })
+});
+
+describe('Test with a correct array', () => {
+  let expected = [
+    'Title: Pride and Prejudice',
+    'hello',
+    'Title: The Peace Negotiations',
+  ];
+  it('this right order: pride and prejudice, hello world, peace negotiations', (resolve, reject) => {
+    let filePathArray = [
+      `./assets/pride-prejudice.txt`,
+      `./assets/hello.txt`,
+      `./assets/peace-negotiations.txt`
+    ];
+    Reader.readAll(filePathArray, (err, results) => {
+      expect(results[0].includes(expected[0])).toEqual(true);
+      expect(results[1].includes(expected[1])).toEqual(true);
+      expect(results[2].includes(expected[2])).toEqual(true);
       resolve();
     });
   })

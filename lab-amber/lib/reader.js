@@ -25,11 +25,11 @@ Reader.readCallBack = (err, results, index, sendFileCB) => {
   } else {
     let readBook = results.toString();
     Reader.newFileArray[index] = readBook;
-    if (Reader.readCount === 3) {
+    if (Reader.readCount === 4) {
       sendFileCB(false, Reader.newFileArray);
     }
     Reader.readCount++;
-  }
+  }  
 }
 
 Reader.readAll = (array, sendFileCB) => {
@@ -38,7 +38,7 @@ Reader.readAll = (array, sendFileCB) => {
   } else {
     for (let i = 0; i < array.length; i++) {
       let currentPath = array[i];
-      Reader.read(currentPath, Reader.readCallBack, i, sendFileCB);
+      Reader.read(currentPath, Reader.readCallBack, i, sendFileCB, false);
     }
   }
 }
