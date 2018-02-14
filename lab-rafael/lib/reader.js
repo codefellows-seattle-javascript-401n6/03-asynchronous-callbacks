@@ -4,23 +4,31 @@ const fs = require('fs');
 
 let reader = (paths, callback) => {
   let newArr = [];
-  let counter = 0;
+  let numDone = 0;
+
+  let handleDone = (err, data, i) => {
+    newArr[i] = data;
+    numDone++;
+    if(err) {
+      callback(err);
+    }
+    if(numDone === paths.length) {
+      callback(null, newArr);
+    }
+  }
 
   paths.forEach((filePath, i) => {
-    let maxWait = 2 * 1000;
-    setTimeout(() => {
-      fs.readFile(filePath, 'utf8', (err, data) => {
-        if(err) {
-          callback('Error: Plase make sure you input valid file paths.');
-        }
-        newArr[i] = data;
-        counter++;
-        if(counter === paths.length) {
-          callback(null, newArr);
-        }
-      });
-    }, maxWait);
+    fs.readFile(filePath, 'utf8', (err, data) => {
+      handleDone(err, data, i);
+    });
   });
 };
-
+// 
+// reader(['/User/rafael/codefellows/401/lab-assignments/03-asynchronous-callbacks/lab-rafael/assets/frankenstein.txt', '/Users/rafael/codefellows/401/lab-assignments/03-asynchronous-callbacks/lab-rafael/assets/heart-darkness.txt', '/Users/rafael/codefellows/401/lab-assignments/03-asynchronous-callbacks/lab-rafael/assets/pride-prejudice.txt'], (err, files) => {
+//   if(err) {
+//     console.log(err);
+//     return;
+//   }
+//   console.log(files);
+// });
 module.exports.reader = reader;

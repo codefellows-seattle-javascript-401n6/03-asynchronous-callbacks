@@ -4,10 +4,11 @@ const reader = require('../lib/reader').reader;
 
 test('Log error to console', done => {
   let input = ['assets/frankenstein.txt', 'not-file', 'assets/pride-prejudice.txt'];
+  let error = false;
   function callback(err, files) {
     if(err) {
-      console.log(err);
-      expect(err).toBe('Error: Plase make sure you input valid file paths.');
+      error = true;
+      expect(error).toEqual(true);
       done();
     }
   }
