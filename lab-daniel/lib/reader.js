@@ -5,6 +5,7 @@ const paths = (['../assets/dracula.txt', '../assets/peterpan.txt', '../assets/si
 
 
 fs.readFile(paths[0], (err, data) => {
+    let files = [];
     if (err) {
       if (err.code === 'EXIST') {
         console.error('myfile already exists');
@@ -14,29 +15,28 @@ fs.readFile(paths[0], (err, data) => {
     }
     let str = data.toString()
     console.log(str);
-  });
 
-fs.readFile(paths[1], (err, data) => {
-    if (err) {
-      if (err.code === 'EXIST') {
+    fs.readFile(paths[1], (err, data) => {
+        if (err) {
+        if (err.code === 'EXIST') {
         console.error('myfile already exists');
         return;
-      }
-      throw err;
-    }
-    let str = data.toString()
-    console.log(str);
-  });
+        }
+        throw err;
+        }
+        let str = data.toString()
+         console.log(str);
 
-
-fs.readFile(paths[2], (err, data) => {
-    if (err) {
-      if (err.code === 'EXIST') {
-        console.error('myfile already exists');
-        return;
-      }
-      throw err;
-    }
-    let str = data.toString()
-    console.log(str);
-  });
+            fs.readFile(paths[2], (err, data) => {
+                if (err) {
+                if (err.code === 'EXIST') {
+                console.error('myfile already exists');
+                return;
+                }
+                throw err;
+                }
+                let str = data.toString()
+                console.log(str);
+        });
+    });
+});
