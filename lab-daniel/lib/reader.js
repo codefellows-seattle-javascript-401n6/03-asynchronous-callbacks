@@ -41,3 +41,7 @@ fs.readFile(paths[2], (err, data) => {
     });
   });
 });
+
+
+module.exports = {};
+module.exports.fs.readfile = fs.readfile;
