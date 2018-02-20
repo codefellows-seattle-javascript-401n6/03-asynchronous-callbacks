@@ -1,0 +1,15 @@
+{
+  "name": "lab-trevor",
+  "version": "1.0.0",
+  "description": "async callbacks",
+  "main": "reader.js",
+  "directories": {
+    "lib": "lib",
+    "test": "test"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Trevor Dobson",
+  "license": "ISC"
+}
