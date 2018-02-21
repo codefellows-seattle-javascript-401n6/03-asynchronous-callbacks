@@ -25,18 +25,18 @@ describe("Testing that the files load to strings", ()=>{
     })
 })
 
-// describe("Testing that the files have loaded in the correct order", ()=>{
-//     it('This test should pass true',(resolve,reject)=>{
-//         callFirst(testArr,(err,data)=>{
-//             if (err) throw err
-//             return data;
+describe("Testing that the files have loaded in the correct order", ()=>{
+    it('This test should pass true',(resolve,reject)=>{
+        callFirst(testArr,function cb(err,data){
+            if (err) throw err
+            console.log(data);
         
-//         console.log('test test',testArr[2])
-//         expect(testArr[2].includes('small')).toBe(true);
-//         resolve();
-//     }) 
-//     })
-// })
+        console.log('test test',data[2])
+        expect(data.includes('Three')).toBe(true);
+        resolve();
+    }) 
+    })
+})
 
 
 // callFirst(testArr,function cb(err,data){
