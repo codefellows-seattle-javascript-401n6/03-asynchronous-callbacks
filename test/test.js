@@ -1,16 +1,45 @@
 "use strict"
+const fs = require('fs');
 const callFirst = require ('../lib/reader.js').callFirst;
-const theCallback = require('../lib/reader.js').theCallback;
-const testArr = require('../lib/reader.js').testArr;
 
-describe("Testing that the files have loaded", ()=>{
+let testArr = [`../assets/fileOneTest`,`../assets/fileTwoTest`,`../assets/fileThreeTest`]
+
+callFirst(testArr,function cb(err,data){
+    if (err) throw err
+    console.log(data);
+})
+
+
+describe("Testing that the files load to strings", ()=>{
+   
     it('This test should pass true',(resolve,reject)=>{
-        callFirst(testArr,theCallback)
-
-        expect(typeof testArr[0] == 'string').toBe(true);
-        expect(typeof testArr[1] == 'string').toBe(true);
-        expect(typeof testArr[2] == 'string').toBe(true);
+        callFirst(testArr,function cb(err,data){
+            if (err) throw err
+            console.log(data);
+      
+        
+        console.log('test',typeof data[0]);
+        expect(typeof data[0] == 'string').toBe(true);
         resolve();
+    })
     })
 })
 
+// describe("Testing that the files have loaded in the correct order", ()=>{
+//     it('This test should pass true',(resolve,reject)=>{
+//         callFirst(testArr,(err,data)=>{
+//             if (err) throw err
+//             return data;
+        
+//         console.log('test test',testArr[2])
+//         expect(testArr[2].includes('small')).toBe(true);
+//         resolve();
+//     }) 
+//     })
+// })
+
+
+// callFirst(testArr,function cb(err,data){
+//     if (err) throw err
+//     console.log(data);
+// })
