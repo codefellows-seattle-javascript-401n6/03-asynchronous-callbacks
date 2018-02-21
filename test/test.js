@@ -4,6 +4,7 @@ const callFirst = require ('../lib/reader.js').callFirst;
 
 let testArr = [`../assets/fileOneTest`,`../assets/fileTwoTest`,`../assets/fileThreeTest`]
 
+let fakeArr = [`../assets/fake`,`../assets/faketwo`,`../assets/fakethree`]
 callFirst(testArr,function cb(err,data){
     if (err) throw err
     console.log(data);
@@ -38,8 +39,15 @@ describe("Testing that the files have loaded in the correct order", ()=>{
     })
 })
 
+describe("Testing if a file path doesn't exist", ()=>{
+    it('This test should pass true',(resolve,reject)=>{
+       let fail = callFirst(fakeArr,function cb(err,data){
+            if (err) throw err
+            console.log(data);
+        
+        expect(fail).toThrow(err);
+        reject();
+    }) 
+    })
+})
 
-// callFirst(testArr,function cb(err,data){
-//     if (err) throw err
-//     console.log(data);
-// })
