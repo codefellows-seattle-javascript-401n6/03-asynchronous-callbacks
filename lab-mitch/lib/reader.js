@@ -2,39 +2,30 @@
 
 const fs = require('fs');
 
-let fileList = ['txtSmall.txt', 'txtMedium.txt', 'txtLarge.txt'];
+function readAll(filePaths, cb) {
+    let readFinished = 0;
+    let result = [];
 
-function readFiles(text, cb) {
-    let allFilesReturned = [];
-    for (let i = 0; i < text.length; i++) {
-        fs.readFile(`../assets/${text[i]}`, (err,data) => {
-            if (err) {
-                throw err;
-                console.log(err);
-            }
+    function whenDone(err, data, i) {
+        if (err) {
+            cb(err);
+            return;
+        }
+        console.log("FILE", i, " has been read.")
 
-            let str = data.toString();
-            allFilesReturned.push(str);
-
-            if (allFilesReturned.length == text.length) {
-                cb(allFilesReturned);
-            };
-        })
+        result[i] = data.toString('utf-8');
+        readFinished++;
+        if (readFinished === pathArr.length) {
+            cb(null, result);
+        }
     }
+
+    filePaths.forEach((pathArr, i) => {
+        fs.readFile(pathArr, (err, data) => {
+            whenDone(err, data, i)
+        })
+
+    })
 }
-readFiles(fileList, (allFilesReturned) => {
-    console.log(allFilesReturned);
-})
 
-
-
-// const readFiles = () => {
-
-//     fs.readFile('../assets/testFileOne.txt', (err, data) => {
-//         if (err) throw err;
-//         let testFileOneToString = data.toString();
-//         console.log(testFileOneToString);
-//         return testFileOneToString;
-//     });
-
-// }
+module.exports = readAll;
