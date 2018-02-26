@@ -1,19 +1,14 @@
 {
-  "name": "03-asynchronous-callbacks",
+  "name": "lab-daniel",
   "version": "1.0.0",
-  "description": "lab03",
+  "description": "",
   "main": "index.js",
-  "scripts": {
-    "test": "jest"
+  "directories": {
+    "test": "test"
   },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/dpillay03/03-asynchronous-callbacks.git"
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "Daniel Pillay",
-  "license": "MIT",
-  "bugs": {
-    "url": "https://github.com/dpillay03/03-asynchronous-callbacks/issues"
-  },
-  "homepage": "https://github.com/dpillay03/03-asynchronous-callbacks#readme"
+  "license": "MIT"
 }
