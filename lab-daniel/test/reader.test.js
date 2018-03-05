@@ -2,11 +2,12 @@
 
 const reader = require('../lib/reader.js');
 
-describe('reader function', () => {
-    it('should return error wrong paths', () => {
-    let paths = ['../assets/dracula.txt', '../assets/not-a-file', '../assets/siddhartha.txt'];
-    let expect = paths;
-    let expected = error;
-    expect(expect).toBe(expected);
+describe('test to see if the array containing the file path is empty', () => {
+    let expected = undefined;
+    it('should return an empty array', (resolve, reject) => {
+        let paths = [];
+        let result = reader.readFile(paths);
+            expect(result).toEqual(expected);
+            resolve();
     })
-})
+});
