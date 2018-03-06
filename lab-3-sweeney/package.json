@@ -1,0 +1,25 @@
+{
+  "name": "03-asynchronous-callbacks",
+  "version": "1.0.0",
+  "description": "lab 3",
+  "main": "read.js",
+  "directories": {
+    "lib": "lib"
+  },
+  "scripts": {
+    "test": "jest"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/splitpeasoup/03-asynchronous-callbacks.git"
+  },
+  "author": "Caitlin",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/splitpeasoup/03-asynchronous-callbacks/issues"
+  },
+  "homepage": "https://github.com/splitpeasoup/03-asynchronous-callbacks#readme",
+  "dependencies": {
+    "async-each": "^1.0.1"
+  }
+}
