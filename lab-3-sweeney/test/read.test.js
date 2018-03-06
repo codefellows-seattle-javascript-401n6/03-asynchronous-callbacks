@@ -1,3 +1,3 @@
 'use strict';
 
-const Readthreefiles = require('../module.js').Readthreefiles;
+const Readthreefiles = require('../read.js').Readthreefiles;
