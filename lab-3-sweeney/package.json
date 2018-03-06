@@ -2,7 +2,7 @@
   "name": "03-asynchronous-callbacks",
   "version": "1.0.0",
   "description": "lab 3",
-  "main": "index.js",
+  "main": "read.js",
   "directories": {
     "lib": "lib"
   },
