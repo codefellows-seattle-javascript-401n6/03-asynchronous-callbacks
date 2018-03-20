@@ -23,7 +23,7 @@ function readCb(err,results){
   console.log('file:',file);
 };
 
-each(inputFile, fs.readFile, readCb);
+// each(inputFile, fs.readFile, readCb);
 
 console.log('output array', outputFile);
 // fs.readFile(inputFile[0], readCb);
@@ -39,3 +39,35 @@ module.exports.Readthreefiles;
 
 
 // fs.readFile(inputFile[2], readCb(err, results));
+const inputFile = [
+  '../assets/file1.txt',
+  '../assets/file2.txt',
+  '../assets/file3.txt'
+];
+function completedAll() {
+  console.log('completed all');
+}
+
+function fileRead(file) {
+  console.log('completed', courseName);
+}
+
+let delay = 10000;
+const arrayOfPromises = Object.keys(inputFiles).map(file => (
+  new Promise((resolve, reject) => {
+    const url = `...${inputFiles[file]}`;
+    console.log('request', url);
+    setTimeout((err, resp, body) => {
+      if (err) {
+        reject(err);
+      }
+
+      // Some code for which I use object values
+      resolve(file);
+    }, (delay /= 2));
+  }))
+  .then(readCb));
+
+Promise.all(arrayOfPromises)
+  .then(completedAll)
+  .catch(console.error);
