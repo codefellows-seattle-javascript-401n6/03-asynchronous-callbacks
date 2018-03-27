@@ -1,21 +1,15 @@
 'use strict';
+const Reader = require('../lib/reader.js').Reader;
+const paths = require('../lib/reader.js').paths;
 
-const readFile = require('../lib/reader.js');
-const paths = require('../lib/reader.js');
-
-describe('it should show mapped string data for an array of file paths', () => {
-        let result = paths;
+describe('readfile Function', () => {
     it('It should show the three files passed into the paths array', (resolve, reject) => {
-        let expected = readFile;
+        let arr = ['../assets/dracula.txt', '../assets/peterpan.txt', '../assets/siddhartha.txt'];
+        let result = arr;
+        let expected = paths;
         expect(result).toEqual(expected);
         resolve();
-    }) 
+    });
 });
 
-
-// describe('test to see if the results match the order the files were passed in', () => {
-//     it('should show 1. Dracula, 2. Peter Pan, 3. Siddhartha', (resolve, reject) => {
-
-//     })
-// });
 

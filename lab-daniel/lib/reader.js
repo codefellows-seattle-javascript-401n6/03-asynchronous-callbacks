@@ -1,12 +1,11 @@
 'use strict';
-const fs = require('fs');
 
-const reader = module.exports = {};
+const fs = require('fs');
 const paths = (['../assets/dracula.txt', '../assets/peterpan.txt', '../assets/siddhartha.txt']);
 
-reader.readFile = (paths, callback) => {
-  reader.files = [];
-  reader.fileCount = 0;
+function readFile(paths, callback){
+  let files = [];
+  let fileCount = 0;
 
   function handleErr(err) {
     if (err) {
@@ -14,15 +13,13 @@ reader.readFile = (paths, callback) => {
       return;
     }
   }
-  
+
   function handleData(data, i) {
       callback(data);
-      reader.files.push(data.toString('utf-8'));
-      reader.fileCount++;
-    
-      console.log('Index: ', i);
-      if (reader.fileCount === paths.length){
-        callback(null, reader.files);
+      files.push(data.toString('utf-8'));
+      fileCount++;
+      if (fileCount === paths.length){
+        callback(null, files);
       }
   }
 
@@ -42,9 +39,11 @@ reader.readFile = (paths, callback) => {
 readFile();  
 }
 
-reader.readFile(paths, (err, data) => {
+readFile(paths, (err, data) => {
   if (err) console.log(err);
   console.log(data);
 });
 
 
+
+module.exports = { readFile, paths };
