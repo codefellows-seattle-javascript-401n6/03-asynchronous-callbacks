@@ -2,28 +2,26 @@
 
 const fs = require('fs');
 
-let files = ['extrashort.text','short.text','beerjunction.text'];
+let reader = (paths, callback) => {
+  let newArr = [];
+  let numDone = 0;
 
-function reader(text, cb) {
-    let list = [];
-    for (let i = 0; i < text.length; i++) {
-
-        fs.readFile(`../assets/${files[i]}`, (err, data) => {
-            if (err) throw err;
-            let str = data.toString();
-            // console.log(str);
-            list.push(str);
-
-            if (list.length == text.length) {
-                cb(list)
-            }
-        });
+  let handleDone = (err, data, i) => {
+    newArr[i] = data;
+    numDone++;
+    if(err) {
+      callback(err);
     }
+    if(numDone === paths.length) {
+      callback(null, newArr);
+    }
+  };
 
-}
-reader(files, (list) => {
-    // console.log(list)
-});
+  paths.forEach((filePath, i) => {
+    fs.readFile(filePath, 'utf8', (err, data) => {
+      handleDone(err, data, i);
+    });
+  });
+};
 
-module.exports = {};
 module.exports.reader = reader;

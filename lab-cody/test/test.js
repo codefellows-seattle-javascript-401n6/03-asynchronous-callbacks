@@ -1,47 +1,37 @@
 'use strict';
-const reader = require('../lib/reader.js').reader;
 
+const reader = require('../lib/reader').reader;
 
-describe('file reader function ', () => {
-    it('should give an error for an incorrect filepath',() => {
-      let str = 'faildamnit';
-      let result = reader(str);
-      let expected = undefined;
-      expect(result).toBe(expected);
-  
-    })
-  });
-  
-  describe('file reader function ', () => {
-    it('ensure the reader function correctly resolves mapped string data for an array of file paths',() => {
-      let str = 'short.text';
-      let result = reader(str);
-      let expected = 'short.text';
-      expect(result).toBe(expected);
-  
-  
-    })
-  });
-  
-  describe('file reader function', () => {
-    it('make sure the order of the results matches the order of the files as they were passed in',() => {
-        reader(files, (list) => {
-            console.log(list)
-        });
-    //   let str = 'world';
-    //   let result = greet(str);
-    //   let expected = 'hello ' + 'world';
-    //   expect(result).toBe(expected);
-    })
-  })
+test('Log error to console', done => {
+  let input = ['assets/beerjunction.txt', 'not a file', 'assets/short.txt'];
+  let error = false;
+  function callback(err, files) {
+    if(err) {
+      error = true;
+      expect(error).toEqual(true);
+      done();
+    }
+  }
+  reader(input, callback);
+});
 
+test('Log valid maped array to console', done => {
+  let input = ['assets/beerjunction.txt', 'assets/extrashort.txt', 'assets/short.txt'];
+  function callback(err, files) {
+    console.log(files);
+    done();
+  }
+  reader(input, callback);
+});
 
-
-
-
-
-
-
-
-
-
+test('Make sure the order of the results matches the order of the files as they were passed in.', done => {
+  let input = ['assets/extrashort.txt', 'assets/short.txt','assets/beerjunction.txt'];
+  function callback(err, files) {
+    console.log(files);
+    expect(files[0]).toBe('extra short!\n');
+    expect(files[1]).toBe('short!\n');
+    expect(files[2]).toBe('beer junction!\n');
+    done();
+  }
+  reader(input, callback);
+});
