@@ -4,7 +4,9 @@ const fs = require('fs');
 
 let list = ['small.txt', 'medium.txt', 'large.txt'];
 
-// setTimeout(function(){ alert("Hello"); }, 3000);
+// setTimeout(function(){ 
+    alert("Hello"); 
+}, 3000);
 
 function reader (text, cb) {
     let results = [];

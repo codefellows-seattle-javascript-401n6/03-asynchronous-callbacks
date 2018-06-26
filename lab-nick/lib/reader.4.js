@@ -6,21 +6,23 @@ let list = ['small.txt', 'medium.txt', 'large.txt'];
 
 // setTimeout(function(){ alert("Hello"); }, 3000);
 
-function reader (text, cb) {
+function reader (array, cb) {
     let results = [];
-    for ( let i = 0; i < text.length; i++) {
+    for ( let i = 0; i < array.length; i++) {
 
-        fs.readFile(`../assets/${text[i]}`, (err, data) => {
-
+        fs.readFile(`../assets/${array[i]}`, (err, data) => {
+            j = i
             if (err) {
                 throw err;
                 console.log(err);
             }
-            let str = data.toString();
-            results.push(str);
+            let str = data.toString('utf-8');
+            // results.push(str);
+            results[j] = str;
             // console.log(str);
 
-            if (results.length == text.length) {
+            if (results.length == array.length) {
+                // result.sort == array
                 cb(results)
             };
         });  

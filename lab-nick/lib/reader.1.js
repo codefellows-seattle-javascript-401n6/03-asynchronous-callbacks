@@ -9,21 +9,20 @@ let list = ['small.txt', 'medium.txt', 'large.txt'];
 function reader (text, cb) {
     let results = [];
     for ( let i = 0; i < text.length; i++) {
-
-        fs.readFile(`../assets/${text[i]}`, (err, data) => {
-
+        setTimeout(fs.readFile(`../assets/${text[i]}`, (err, data) => {
             if (err) {
                 throw err;
                 console.log(err);
             }
             let str = data.toString();
             results.push(str);
-            // console.log(str);
+            console.log(str);
 
-            if (results.length == text.length) {
-                cb(results)
-            };
-        });  
+            
+        }),1000 * list.length);
+        if (results.length == text.length) {
+            cb(results)
+        };
     };
 };
 
