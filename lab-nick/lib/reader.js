@@ -1,38 +1,27 @@
-'use strict';
+'use strict'
 
 const fs = require('fs');
 
-let list = ['small.txt', 'medium.txt', 'large.txt'];
+let reader = (location, cb) => {
+  let newArr = [];
+  let done = 0;
 
-// setTimeout(function(){ alert("Hello"); }, 3000);
+  let handleDone = (err, data, i) => {
+    newArr[i] = data;
+    done++;
+    if(err) {
+      cb(err);
+    }
+    if(done === location.length) {
+      cb(null, newArr);
+    }
+  }
 
-function reader (text, cb) {
-    let results = [];
-    for ( let i = 0; i < text.length; i++) {
-
-        fs.readFile(`../assets/${text[i]}`, (err, data) => {
-
-            if (err) {
-                throw err;
-                console.log(err);
-            }
-            let str = data.toString();
-            results.push(str);
-            // console.log(str);
-
-            if (results.length == text.length) {
-                cb(results)
-            };
-        });  
-    };
+  location.forEach((filePath, i) => {
+    fs.readFile(filePath, 'utf8', (err, data) => {
+      handleDone(err, data, i);
+    });
+  });
 };
 
-reader(list, (results) => {
-    console.log(results)
-});
-
-// reader(['fakeFile.txt'], (results) => {
-//     console.log(results)
-// });
-module.exports = {};
 module.exports.reader = reader;
